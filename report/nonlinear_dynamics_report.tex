@@ -36,7 +36,6 @@ For the invariant-density experiment, 1,000 transient iterates are removed and 5
 \centering\includegraphics[width=.76\linewidth]{../results/logistic_map_timeseries.png}
 \caption{Logistic-map time series for $r=4$ and $x_0=0.213$.}
 \end{figure}
-\clearpage
 \section{Parameter dependence and instability}
 The bifurcation diagram shows the changing long-term orbit structure as $r$ increases. The Lyapunov curve summarizes local exponential expansion or contraction. At $r=4$, the numerical estimate is 0.693020 versus the exact value $\ln2=0.693147$; their difference is consistent with finite sampling and floating-point computation. The two nearby trajectories visibly separate, while the logarithmic separation plot makes the early growth easier to inspect.
 \begin{figure}[h]
@@ -50,6 +49,7 @@ The bifurcation diagram shows the changing long-term orbit structure as $r$ incr
 \captionof{figure}{Numerical largest Lyapunov exponent.}
 \end{minipage}
 \end{figure}
+\clearpage
 \begin{figure}[h]
 \centering
 \begin{minipage}{.49\linewidth}\centering
@@ -70,11 +70,19 @@ The empirical histogram has the expected U-shaped form and is compared with the 
 \end{figure}
 \section{Educational interval-mapping text experiment}
 The submitted code partitions $[0,1]$ into 26 equal-width intervals for the letters A--Z. For each letter it records how many iterations are needed to reach its interval, then decrypts by replaying the counts from the same initial state. With $r=4.0$ and $x_0=0.213$, the messages \texttt{CHAOS}, \texttt{LOGISTICMAP}, \texttt{NONLINEARDYNAMICS}, and \texttt{ENCRYPTION} were all recovered exactly. Figure~\ref{fig:counts} displays the 43 recorded iteration counts from these checks.
+\begin{center}\small
+\begin{tabular}{lrrr}\hline
+Message & Characters & Recovered & Time (s)\\\hline
+CHAOS & 5 & Yes & 0.000212\\
+LOGISTICMAP & 11 & Yes & 0.000348\\
+NONLINEARDYNAMICS & 17 & Yes & 0.000620\\
+ENCRYPTION & 10 & Yes & 0.000360\\\hline
+\end{tabular}
+\end{center}
 \begin{figure}[h]
 \centering\includegraphics[width=.76\linewidth]{../results/ciphertext_distribution.png}
 \caption{Iteration-count distribution for four successful demonstration tests.}\label{fig:counts}
 \end{figure}
-\clearpage
 \section{Literature context, limitations, and conclusion}
 \citet{Baptista1998} proposed an iteration-count scheme based on the logistic map's ergodic behaviour. The submitted implementation is not a faithful reproduction: it fixes $r=4$, uses 26 equal-width intervals over the full unit interval, and provides no implementation of the original protocol's full design or keying details. It is therefore not suitable for secure use.
 
